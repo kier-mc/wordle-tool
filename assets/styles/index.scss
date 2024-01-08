@@ -1,0 +1,54 @@
+@use "./var/size";
+
+@import url("normalize.css");
+
+*,
+:root {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100svh;
+  line-height: 1.618;
+}
+
+p {
+  all: unset;
+  display: block;
+  line-height: 1.618;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  all: unset;
+  display: block;
+  line-height: 1.618;
+}
+
+h1 {
+  font-size: size.$text-h1;
+}
+
+h2 {
+  font-size: size.$text-h2;
+}
+
+h3 {
+  font-size: size.$text-h3;
+}
+
+h4 {
+  font-size: size.$text-h4;
+}
+
+h5 {
+  font-size: size.$text-h5;
+}
+
+h6 {
+  font-size: size.$text-h6;
+}
