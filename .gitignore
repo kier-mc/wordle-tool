@@ -25,3 +25,5 @@ logs
 
 # Custom folders
 .dev
+scripts/output
+server/data
