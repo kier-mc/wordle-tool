@@ -12,4 +12,13 @@ export default defineNuxtConfig({
   // },
   css: ["~/assets/styles/index.scss"],
   devtools: { enabled: true },
+  nitro: {
+    compressPublicAssets: true,
+    serverAssets: [
+      {
+        baseName: "data",
+        dir: "./data",
+      },
+    ],
+  },
 });
