@@ -10,6 +10,7 @@ export default defineNuxtConfig({
   //     ],
   //   },
   // },
+  components: ["~/components", "~/components/icons"],
   css: ["~/assets/styles/index.scss"],
   devtools: { enabled: true },
   nitro: {
