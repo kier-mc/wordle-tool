@@ -11,9 +11,7 @@
 </style>
 
 <script setup lang="ts">
-enum Icons {
-  "github" = "GitHub",
-}
+import { Icons } from "~/utils/enums";
 
 const props = defineProps({
   /**
