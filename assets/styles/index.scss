@@ -1,21 +1,70 @@
+@use "./var/colour";
+@use "./var/easing";
 @use "./var/size";
 
 @import url("normalize.css");
 
+@mixin lightMode {
+  --cl-background: #{colour.base("100")};
+  --cl-text: #{colour.base("900")};
+  --cl-icon: #{colour.base("700")};
+  --cl-icon-hover: #{colour.base("900")};
+  --cl-footer: #{colour.base("300")};
+}
+
+@mixin darkMode {
+  --cl-background: #{colour.base("900")};
+  --cl-text: #{colour.base("100")};
+  --cl-icon: #{colour.base("400")};
+  --cl-icon-hover: #{colour.base("100")};
+  --cl-footer: #{colour.base("800")};
+}
+
+:root {
+  --sz-xs: #{size.general("xs")};
+  --sz-sm: #{size.general("sm")};
+  --sz-md: #{size.general("md")};
+  --sz-lg: #{size.general("lg")};
+  --sz-xl: #{size.general("xl")};
+
+  --sz-text-sm: #{size.text("sm")};
+  --sz-text-md: #{size.text("md")};
+  --sz-text-lg: #{size.text("lg")};
+  --sz-text-xl: #{size.text("xl")};
+
+  --ef-out-quart: #{easing.out("quart")};
+}
+
+:root,
+.--light {
+  @include lightMode;
+}
+
+.--dark {
+  @include darkMode;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    @include darkMode;
+  }
+}
+
 *,
 :root {
   box-sizing: border-box;
+  line-height: 1.618;
 }
 
 body {
   min-height: 100svh;
-  line-height: 1.618;
+  background-color: var(--cl-background);
+  color: var(--cl-text);
 }
 
 p {
   all: unset;
   display: block;
-  line-height: 1.618;
 }
 
 h1,
@@ -26,29 +75,4 @@ h5,
 h6 {
   all: unset;
   display: block;
-  line-height: 1.618;
-}
-
-h1 {
-  font-size: size.$text-h1;
-}
-
-h2 {
-  font-size: size.$text-h2;
-}
-
-h3 {
-  font-size: size.$text-h3;
-}
-
-h4 {
-  font-size: size.$text-h4;
-}
-
-h5 {
-  font-size: size.$text-h5;
-}
-
-h6 {
-  font-size: size.$text-h6;
 }
