@@ -5,6 +5,7 @@
 <style scoped lang="scss">
 .icon {
   aspect-ratio: 1/1;
+  width: 100%;
   max-width: v-bind(setSize);
   fill: v-bind(setFill);
 }
