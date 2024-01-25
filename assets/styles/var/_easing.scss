@@ -1,0 +1,9 @@
+@use "sass:map";
+
+$curve-out: (
+  "quart": cubic-bezier(0.25, 1, 0.5, 1),
+);
+
+@function out($key) {
+  @return map.get($curve-out, $key);
+}
