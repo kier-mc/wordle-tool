@@ -10,6 +10,9 @@
   --cl-icon: #{colour.base("700")};
   --cl-icon-hover: #{colour.base("900")};
   --cl-footer: #{colour.base("300")};
+  --cl-input-background: #{colour.base("300")};
+  --cl-input-border: #{colour.base("500")};
+  --cl-input-text: #{colour.base("800")};
 }
 
 @mixin darkMode {
@@ -18,6 +21,9 @@
   --cl-icon: #{colour.base("400")};
   --cl-icon-hover: #{colour.base("100")};
   --cl-footer: #{colour.base("800")};
+  --cl-input-background: #{colour.base("700")};
+  --cl-input-border: #{colour.base("600")};
+  --cl-input-text: #{colour.base("200")};
 }
 
 :root {
