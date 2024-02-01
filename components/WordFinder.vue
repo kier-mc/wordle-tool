@@ -6,6 +6,7 @@
         v-for="(_, index) in correct"
         :key="`correct-${index}`"
         v-model:value="correct[index]"
+        @keydown="validateLetter($event)"
       />
     </section>
     <section class="section section__valid">
@@ -14,11 +15,12 @@
         v-for="(_, index) in valid"
         :key="`valid-${index}`"
         v-model:value="valid[index]"
+        @keydown="validateLetter($event)"
       />
     </section>
     <section class="section section__absent">
       <h2 class="header">Absent Letters</h2>
-      <InputAbsent v-model:value="absent" />
+      <InputAbsent v-model:value="absent" @keydown="validateAbsent($event)" />
     </section>
   </article>
 </template>
@@ -72,4 +74,20 @@ const data = ref<FinderState>({
 });
 
 const { correct, valid, absent } = toRefs(data.value);
+
+function validateLetter(event: KeyboardEvent) {
+  const { key } = event;
+  const prohibited = absent.value;
+  if (!prohibited || !prohibited.includes(key)) return;
+  event.preventDefault();
+}
+
+function validateAbsent(event: KeyboardEvent) {
+  const { key } = event;
+  const setA = Object.values(correct.value);
+  const setB = Object.values(valid.value);
+  const prohibited = [...setA, ...setB].filter(Boolean);
+  if (!prohibited.includes(key)) return;
+  event.preventDefault();
+}
 </script>
