@@ -1,9 +1,9 @@
 <template>
-  <label :for="props.id" class="$visually-hidden">{{ label }}</label>
+  <label :for="id" class="$visually-hidden">{{ label }}</label>
   <input
-    :id="props.id"
-    :name="props.id"
-    :value="letter"
+    :id="id"
+    :name="id"
+    :value="value"
     @input="handleInput($event)"
     autocomplete="off"
     class="$input input"
@@ -28,16 +28,27 @@
 const props = defineProps({
   id: { type: String as PropType<string> },
   label: { type: String as PropType<string> },
+  value: { type: [String, null] as PropType<string | null>, required: true },
 });
 
-const letter = defineModel<string | null>("letter", { required: true });
+const { id, label, value } = toRefs(props);
+
+const emits = defineEmits<{
+  (event: "update:value", value: string | null): void;
+}>();
+
+function emitValue(value: string): void {
+  emits("update:value", value);
+}
+
+function emitNull(): void {
+  emits("update:value", null);
+}
 
 function handleInput(event: Event): void {
   const { value } = event.target as HTMLInputElement;
-  if (!value) {
-    letter.value = null;
-    return;
-  }
-  letter.value = value.toLowerCase();
+  const letter = value.toLowerCase();
+  if (!value) return emitNull();
+  emitValue(letter);
 }
 </script>
