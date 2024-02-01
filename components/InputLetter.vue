@@ -4,6 +4,7 @@
     :id="id"
     :name="id"
     :value="value"
+    @keydown="validateKeypress($event)"
     @input="handleInput($event)"
     autocomplete="off"
     class="$input input"
@@ -43,6 +44,12 @@ function emitValue(value: string): void {
 
 function emitNull(): void {
   emits("update:value", null);
+}
+
+function validateKeypress(event: KeyboardEvent): void {
+  const { key } = event;
+  if (shouldIgnoreKey(key) || isAlphabetical(key)) return;
+  event.preventDefault();
 }
 
 function handleInput(event: Event): void {
