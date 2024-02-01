@@ -1,16 +1,18 @@
 <template>
-  <label :for="id" class="$visually-hidden">{{ label }}</label>
-  <input
-    :id="id"
-    :name="id"
-    :value="value"
-    @keydown="validateKeypress($event)"
-    @input="handleInput($event)"
-    autocomplete="off"
-    class="$input input"
-    maxlength="1"
-    type="text"
-  />
+  <div>
+    <label :for="id" class="$visually-hidden">{{ label }}</label>
+    <input
+      :id="id"
+      :name="id"
+      :value="value"
+      @keydown="validateKeypress($event)"
+      @input="handleInput($event)"
+      autocomplete="off"
+      class="$input input"
+      maxlength="1"
+      type="text"
+    />
+  </div>
 </template>
 
 <style scoped lang="scss">
