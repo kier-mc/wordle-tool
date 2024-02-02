@@ -1,6 +1,6 @@
 <template>
   <div class="grid">
-    <main>
+    <main class="main">
       <slot />
     </main>
     <AppFooter />
@@ -12,6 +12,9 @@
   display: grid;
   grid-template-rows: 1fr auto;
   min-height: 100svh;
+}
+.main {
+  margin-top: var(--sz-xl);
 }
 </style>
 
