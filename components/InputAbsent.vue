@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="input-wrapper">
     <label :for="id" class="$visually-hidden">{{ label }}</label>
     <input
       :id="id"
@@ -15,8 +15,11 @@
 </template>
 
 <style scoped lang="scss">
-@use "../assets/styles/var/global";
+.input-wrapper {
+  display: flex;
+}
 .input {
+  width: 100%;
   font-size: var(--sz-text-lg);
   text-transform: uppercase;
 }

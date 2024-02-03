@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="input-wrapper">
     <label :for="id" class="$visually-hidden">{{ label }}</label>
     <input
       :id="id"
@@ -16,7 +16,6 @@
 </template>
 
 <style scoped lang="scss">
-@use "../assets/styles/var/global";
 .input {
   --text-size: var(--sz-text-xl);
   aspect-ratio: 1/1;
