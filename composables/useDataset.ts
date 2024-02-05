@@ -1,4 +1,4 @@
-import type { AsyncDataRequestStatus } from "nuxt/dist/app/composables/asyncData";
+import type { AsyncDataRequestStatus } from "~/node_modules/nuxt/dist/app/composables/asyncData";
 import type { MaybeRef } from "vue";
 import type { StatefulWordData } from "~/types/api.dataset";
 import type { ValidWord } from "~/types/unions/api.dataset";
@@ -32,7 +32,7 @@ export const useDataset = function () {
    * are recognised and accepted by the game "Wordle". If the data is not
    * available, returns an empty array.
    */
-  function getAllWords() {
+  function getAllWords(): ValidWord[] {
     if (!dataset.value) return [];
     return dataset.value.map((word) => word.term);
   }

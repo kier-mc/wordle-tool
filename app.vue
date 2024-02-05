@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import type { StatefulWordData } from "~/types/api.dataset";
 import type { UseFetchOptions } from "nuxt/app";
-import type { AsyncDataRequestStatus } from "nuxt/dist/app/composables/asyncData";
+import type { AsyncDataRequestStatus } from "~/node_modules/nuxt/dist/app/composables/asyncData";
 
 const options: UseFetchOptions<StatefulWordData> = { deep: false };
 
