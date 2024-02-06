@@ -16,7 +16,7 @@ export type FinderState = {
    */
   valid: IndexedWord;
   /**
-   * A nullable string that
+   * A nullable string for letters entered into the "absent" section.
    */
   absent: string | null;
 };
