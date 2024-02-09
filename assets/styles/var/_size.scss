@@ -37,6 +37,12 @@ $size-icon: (
   "xl": 5rem,
 );
 
+$size-border: (
+  "sm": 0.0625rem,
+  "md": 0.125rem,
+  "lg": 0.1875rem,
+);
+
 @function breakpoint($key) {
   @return map.get($size-breakpoint, $key);
 }
@@ -51,4 +57,8 @@ $size-icon: (
 
 @function icon($key) {
   @return map.get($size-icon, $key);
+}
+
+@function border($key) {
+  @return map.get($size-border, $key);
 }
