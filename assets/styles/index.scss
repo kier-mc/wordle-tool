@@ -14,6 +14,23 @@
   --cl-input-background: #{colour.base("300")};
   --cl-input-border: #{colour.base("500")};
   --cl-input-text: #{colour.base("800")};
+  --cl-button-background: #{colour.base("300")};
+  --cl-button-background-hover: #{colour.base("100")};
+  --cl-button-border: #{colour.base("500")};
+  --cl-button-text: #{colour.base("900")};
+  --cl-button-brand-background: #{colour.brand("600")};
+  --cl-button-brand-background-hover: #{colour.brand("400")};
+  --cl-button-brand-border: #{colour.brand("400")};
+  --cl-button-brand-text: #{colour.base("100")};
+  --cl-button-red-background: #{colour.red("600")};
+  --cl-button-red-border: #{colour.red("400")};
+  --cl-button-red-text: #{colour.base("100")};
+  --cl-button-yellow-background: #{colour.yellow("600")};
+  --cl-button-yellow-border: #{colour.yellow("400")};
+  --cl-button-yellow-text: #{colour.base("900")};
+  --cl-button-green-background: #{colour.green("700")};
+  --cl-button-green-border: #{colour.green("400")};
+  --cl-button-green-text: #{colour.base("100")};
 }
 
 @mixin darkMode {
@@ -38,6 +55,10 @@
   --sz-text-md: #{size.text("md")};
   --sz-text-lg: #{size.text("lg")};
   --sz-text-xl: #{size.text("xl")};
+
+  --sz-border-sm: #{size.border("sm")};
+  --sz-border-md: #{size.border("md")};
+  --sz-border-lg: #{size.border("lg")};
 
   --ef-out-quart: #{easing.out("quart")};
 }
