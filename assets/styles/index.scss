@@ -7,27 +7,33 @@
 
 @mixin lightMode {
   --cl-background: #{colour.base("100")};
+  --cl-footer: #{colour.base("300")};
+
   --cl-text: #{colour.base("900")};
+
   --cl-icon: #{colour.base("700")};
   --cl-icon-hover: #{colour.base("900")};
-  --cl-footer: #{colour.base("300")};
+
   --cl-input-background: #{colour.base("300")};
   --cl-input-border: #{colour.base("500")};
   --cl-input-text: #{colour.base("800")};
-  --cl-button-background: #{colour.base("300")};
-  --cl-button-background-hover: #{colour.base("100")};
+
+  --cl-button-background: #{colour.base("600")};
   --cl-button-border: #{colour.base("500")};
-  --cl-button-text: #{colour.base("900")};
+  --cl-button-text: #{colour.base("100")};
+
   --cl-button-brand-background: #{colour.brand("600")};
-  --cl-button-brand-background-hover: #{colour.brand("400")};
   --cl-button-brand-border: #{colour.brand("400")};
   --cl-button-brand-text: #{colour.base("100")};
+
   --cl-button-red-background: #{colour.red("600")};
   --cl-button-red-border: #{colour.red("400")};
   --cl-button-red-text: #{colour.base("100")};
+
   --cl-button-yellow-background: #{colour.yellow("600")};
   --cl-button-yellow-border: #{colour.yellow("400")};
   --cl-button-yellow-text: #{colour.base("900")};
+
   --cl-button-green-background: #{colour.green("700")};
   --cl-button-green-border: #{colour.green("400")};
   --cl-button-green-text: #{colour.base("100")};
@@ -35,10 +41,14 @@
 
 @mixin darkMode {
   --cl-background: #{colour.base("900")};
-  --cl-text: #{colour.base("100")};
-  --cl-icon: #{colour.base("400")};
-  --cl-icon-hover: #{colour.base("100")};
   --cl-footer: #{colour.base("800")};
+
+  --cl-text: #{colour.base("100")};
+
+  --cl-icon: #{colour.base("400")};
+
+  --cl-icon-hover: #{colour.base("100")};
+
   --cl-input-background: #{colour.base("700")};
   --cl-input-border: #{colour.base("600")};
   --cl-input-text: #{colour.base("200")};
@@ -87,6 +97,7 @@
 body {
   min-height: 100svh;
   background-color: var(--cl-background);
+  font-size: var(--sz-text-md);
   color: var(--cl-text);
 }
 
