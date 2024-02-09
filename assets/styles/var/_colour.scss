@@ -12,6 +12,70 @@ $palette-base: (
   "900": #212529,
 );
 
+$palette-brand: (
+  "100": #dde5ee,
+  "200": #bfcdde,
+  "300": #9db3cd,
+  "400": #7f9bbd,
+  "500": #5e81ac,
+  "600": #49688d,
+  "700": #364d68,
+  "800": #243447,
+  "900": #111922,
+);
+
+$palette-red: (
+  "100": #f2dee0,
+  "200": #e6c1c5,
+  "300": #d9a1a6,
+  "400": #cc8088,
+  "500": #bf616a,
+  "600": #a3424c,
+  "700": #7b3239,
+  "800": #532227,
+  "900": #281013,
+);
+
+$palette-yellow: (
+  "100": #fbf5e9,
+  "200": #f7eacf,
+  "300": #f3e0b9,
+  "400": #efd6a4,
+  "500": #ebcb8b,
+  "600": #e0af4d,
+  "700": #bf8b21,
+  "800": #7e5b16,
+  "900": #412f0b,
+);
+
+$palette-green: (
+  "100": #edf2e8,
+  "200": #dbe5d1,
+  "300": #c8d8bb,
+  "400": #b6cba4,
+  "500": #a3be8c,
+  "600": #82a763,
+  "700": #627f48,
+  "800": #415530,
+  "900": #212a18,
+);
+
 @function base($key) {
   @return map.get($palette-base, $key);
+}
+
+@function brand($key) {
+  @return map.get($palette-brand, $key);
+}
+
+@function red($key) {
+  @return map.get($palette-red, $key);
+}
+
+@function yellow($key) {
+  @return map.get($palette-yellow, $key);
+}
+
+@function green($key) {
+  @return map.get($palette-green, $key);
 }
