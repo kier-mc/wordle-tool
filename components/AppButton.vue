@@ -1,5 +1,7 @@
 <template>
-  <button :class="setClass" type="button"><slot /></button>
+  <button :class="setClass" type="button">
+    <span class="content"><slot /></span>
+  </button>
 </template>
 
 <style scoped lang="scss">
@@ -7,6 +9,7 @@
   --border-size: var(--sz-border-sm);
   all: unset;
   cursor: pointer;
+  position: relative;
   max-width: max-content;
   padding-inline: var(--sz-lg);
   padding-block: var(--sz-sm);
@@ -16,6 +19,23 @@
   text-transform: uppercase;
   color: var(--cl-button-text);
   transition: background-color 500ms var(--ef-out-quart), color 500ms var(--ef-out-quart);
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--cl-text);
+    opacity: 0;
+    transition: opacity 500ms var(--ef-out-quart);
+  }
+  &:hover {
+    &::before {
+      opacity: 0.125;
+    }
+    & .content::before {
+      transform: scaleX(1);
+      opacity: 0.75;
+    }
+  }
   &--brand {
     border: var(--border-size) solid var(--cl-button-brand-border);
     background-color: var(--cl-button-brand-background);
@@ -37,6 +57,21 @@
     color: var(--cl-button-green-text);
   }
 }
+.content {
+  display: block;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: calc(var(--sz-text-md) + 25%) 0 0 0;
+    height: var(--sz-border-md);
+    transform: scaleX(0);
+    transform-origin: center;
+    background-color: v-bind(setUnderlineColour);
+    opacity: 0;
+    transition: transform 250ms var(--ef-out-quart), opacity 300ms var(--ef-out-quart);
+  }
+}
 </style>
 
 <script setup lang="ts">
@@ -49,7 +84,8 @@ const props = defineProps({
 const { colour } = toRefs(props);
 
 const setClass = computed(() => {
-  switch (colour.value) {
+  const { value } = colour;
+  switch (value) {
     case "base":
       return "button";
     case "brand":
@@ -60,6 +96,19 @@ const setClass = computed(() => {
       return "button button--yellow";
     case "green":
       return "button button--green";
+  }
+});
+
+const setUnderlineColour = computed(() => {
+  const { value } = colour;
+  switch (value) {
+    case "base":
+    case "brand":
+    case "red":
+    case "green":
+      return "var(--cl-text)";
+    case "yellow":
+      return "var(--cl-background)";
   }
 });
 </script>
