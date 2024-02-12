@@ -75,40 +75,21 @@
 </style>
 
 <script setup lang="ts">
-type ValidStyle = "base" | "brand" | "red" | "yellow" | "green";
+import type { ValidColour } from "../types/components.app";
 
 const props = defineProps({
-  colour: { type: String as PropType<ValidStyle>, default: "base" },
+  colour: { type: String as PropType<ValidColour>, default: "base" },
 });
 
 const { colour } = toRefs(props);
 
 const setClass = computed(() => {
   const { value } = colour;
-  switch (value) {
-    case "base":
-      return "button";
-    case "brand":
-      return "button button--brand";
-    case "red":
-      return "button button--red";
-    case "yellow":
-      return "button button--yellow";
-    case "green":
-      return "button button--green";
-  }
+  return value === "base" ? "button" : `button button--${value}`;
 });
 
 const setUnderlineColour = computed(() => {
   const { value } = colour;
-  switch (value) {
-    case "base":
-    case "brand":
-    case "red":
-    case "green":
-      return "var(--cl-text)";
-    case "yellow":
-      return "var(--cl-background)";
-  }
+  return `var(--cl-button-${value}-text)`;
 });
 </script>
