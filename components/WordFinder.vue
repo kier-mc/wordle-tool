@@ -1,7 +1,7 @@
 <template>
   <article class="finder">
     <section class="section section__correct">
-      <h2 class="header">Correct Letters</h2>
+      <h2 class="header header__correct">Correct Letters</h2>
       <InputLetter
         v-for="(_, index) in correct"
         :key="`correct-${index}`"
@@ -10,7 +10,7 @@
       />
     </section>
     <section class="section section__valid">
-      <h2 class="header">Valid Letters</h2>
+      <h2 class="header header__valid">Valid Letters</h2>
       <InputLetter
         v-for="(_, index) in valid"
         :key="`valid-${index}`"
@@ -19,19 +19,22 @@
       />
     </section>
     <section class="section section__absent">
-      <h2 class="header">Absent Letters</h2>
+      <h2 class="header header__absent">Absent Letters</h2>
       <InputAbsent v-model:value="absent" @keydown="validateAbsent($event)" />
+    </section>
+    <section class="controls">
+      <AppButton colour="brand" @click="handleClick()">Find Matches</AppButton>
+      <AppButton colour="red" @click="resetState()">Clear All</AppButton>
     </section>
   </article>
 </template>
 
 <style scoped lang="scss">
+@use "../assets/styles/var/size";
 .finder {
   display: grid;
-  grid-template-rows: repeat(3, auto);
+  grid-template-rows: repeat(4, auto);
   row-gap: var(--sz-lg);
-  justify-content: center;
-  max-width: 60ch;
   margin-inline: auto;
 }
 .section {
@@ -45,14 +48,22 @@
   column-gap: var(--sz-xs);
 }
 .section__absent {
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: repeat(1, auto);
+}
+.controls {
+  display: flex;
+  justify-content: space-between;
 }
 .header {
-  grid-column: 1 / 6;
+  &__correct,
+  &__valid {
+    grid-column: 1 / 6;
+  }
 }
 </style>
 
 <script setup lang="ts">
+import type { WordData } from "~/types/api.dataset";
 import type { FinderState } from "~/types/components.word";
 
 const data = ref<FinderState>({
@@ -72,8 +83,10 @@ const data = ref<FinderState>({
   },
   absent: null,
 });
-
 const { correct, valid, absent } = toRefs(data.value);
+
+const { findMatches } = useFinder(data);
+const matches = useState<WordData[]>("matches");
 
 function validateLetter(event: KeyboardEvent) {
   const { key } = event;
@@ -89,5 +102,16 @@ function validateAbsent(event: KeyboardEvent) {
   const prohibited = [...setA, ...setB].filter(Boolean);
   if (!prohibited.includes(key)) return;
   event.preventDefault();
+}
+
+function handleClick() {
+  matches.value = findMatches().value;
+}
+
+function resetState() {
+  correct.value = Object.values(correct.value).map((value) => (value = null));
+  valid.value = Object.values(valid.value).map((value) => (value = null));
+  absent.value = null;
+  matches.value = [];
 }
 </script>
