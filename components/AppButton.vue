@@ -1,5 +1,5 @@
 <template>
-  <button :class="setClass" type="button">
+  <button :class="setClass" type="button" :disabled="disabled">
     <span class="content"><slot /></span>
   </button>
 </template>
@@ -19,7 +19,11 @@
   font-weight: 600;
   text-transform: uppercase;
   color: var(--cl-button-text);
-  transition: background-color 500ms var(--ef-out-quart), color 500ms var(--ef-out-quart);
+  // prettier-ignore
+  transition:
+    background-color 500ms var(--ef-out-quart),
+    opacity 500ms var(--ef-out-quart),
+    color 500ms var(--ef-out-quart);
   &::before {
     content: "";
     position: absolute;
@@ -35,6 +39,16 @@
     & .content::before {
       transform: scaleX(1);
       opacity: 0.75;
+    }
+  }
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    &::before {
+      opacity: 0.25;
+    }
+    & .content::before {
+      transform: scaleX(0);
     }
   }
   &--brand {
@@ -80,9 +94,10 @@ import type { ValidColour } from "../types/components.app";
 
 const props = defineProps({
   colour: { type: String as PropType<ValidColour>, default: "base" },
+  disabled: { type: Boolean as PropType<boolean>, default: false },
 });
 
-const { colour } = toRefs(props);
+const { colour, disabled } = toRefs(props);
 
 const setClass = computed(() => {
   const { value } = colour;
