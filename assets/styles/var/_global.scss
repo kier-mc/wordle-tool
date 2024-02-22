@@ -1,4 +1,4 @@
-.\$visually-hidden {
+@mixin visuallyHidden {
   overflow: hidden;
   position: absolute;
   width: 1px;
@@ -8,6 +8,10 @@
   margin: -1px;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
+}
+
+.\$visually-hidden {
+  @include visuallyHidden();
 }
 
 .\$input {
