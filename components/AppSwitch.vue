@@ -7,6 +7,7 @@
 </template>
 
 <style scoped lang="scss">
+@use "../assets/styles/var/global";
 .switch {
   --track-width: 3rem;
   --track-height: calc(var(--track-width) / 2);
@@ -18,16 +19,7 @@
   column-gap: var(--sz-md);
   &__input {
     &[type="checkbox"] {
-      // TODO: don't repeat this code here; use a mixin/refactor for global class
-      overflow: hidden;
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      border: 0;
-      margin: -1px;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
+      @include global.visuallyHidden();
     }
     &:checked + .switch__track {
       background-color: var(--cl-switch-active-background);
