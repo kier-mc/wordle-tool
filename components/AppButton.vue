@@ -7,6 +7,7 @@
 <style scoped lang="scss">
 .button {
   --border-size: var(--sz-border-sm);
+
   all: unset;
   cursor: pointer;
   position: relative;
@@ -43,7 +44,7 @@
     }
   }
   // Generates focused border
-  &:after {
+  &::after {
     content: "";
     position: absolute;
     inset: 0;
