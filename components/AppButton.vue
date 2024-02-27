@@ -24,7 +24,7 @@
     background-color 500ms var(--ef-out-quart),
     opacity 500ms var(--ef-out-quart),
     color 500ms var(--ef-out-quart);
-  // Generates hovered underline
+  // Generates hover overlay
   &::before {
     content: "";
     position: absolute;
@@ -92,6 +92,7 @@
 .content {
   display: block;
   position: relative;
+  // Generates hover underline
   &::before {
     content: "";
     position: absolute;
