@@ -123,7 +123,6 @@ const setClass = computed(() => {
 
 const setUnderlineColour = computed(() => {
   const { value } = colour;
-  if (value === "base") return `var(--cl-button-text)`;
-  return `var(--cl-button-${value}-text)`;
+  return value === "base" ? "var(--cl-button-text)" : `var(--cl-button-${value}-text)`;
 });
 </script>
