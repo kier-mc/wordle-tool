@@ -24,6 +24,7 @@
     background-color 500ms var(--ef-out-quart),
     opacity 500ms var(--ef-out-quart),
     color 500ms var(--ef-out-quart);
+  // Generates hovered underline
   &::before {
     content: "";
     position: absolute;
@@ -39,6 +40,22 @@
     & .content::before {
       transform: scaleX(1);
       opacity: 0.75;
+    }
+  }
+  // Generates focused border
+  &:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    margin: calc(var(--sz-border-lg) * -1);
+    z-index: -10;
+    background-color: var(--cl-text);
+    opacity: 0;
+    transition: opacity 500ms var(--ef-out-quart);
+  }
+  &:focus {
+    &::after {
+      opacity: 1;
     }
   }
   &:disabled {
