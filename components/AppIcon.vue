@@ -12,7 +12,7 @@
 </style>
 
 <script setup lang="ts">
-import { Icons } from "~/utils/enums";
+import { Icons, IconSizes } from "~/utils/enums";
 
 const props = defineProps({
   /**
@@ -28,7 +28,7 @@ const props = defineProps({
    * The size of the rendered icon.
    * @defaultvalue 3rem
    */
-  size: { type: String as PropType<string>, default: "3rem" },
+  size: { type: String as PropType<IconSizes>, default: "3rem" },
 });
 
 const useIcon = defineAsyncComponent<Component>({
