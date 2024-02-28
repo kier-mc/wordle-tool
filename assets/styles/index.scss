@@ -91,13 +91,6 @@
   }
 }
 
-*,
-:root {
-  scroll-behavior: smooth;
-  box-sizing: border-box;
-  line-height: 1.618;
-}
-
 body {
   min-height: 100svh;
   background-color: var(--cl-background);
@@ -118,4 +111,11 @@ h5,
 h6 {
   all: unset;
   display: block;
+}
+
+*,
+:root {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  line-height: 1.618;
 }
