@@ -19,6 +19,7 @@ $size-general: (
   "md": $baseline-general,
   "lg": $baseline-general * $ratio-general,
   "xl": $baseline-general * math.pow($ratio-general, 2),
+  "2xl": $baseline-general * math.pow($ratio-general, 3),
 );
 
 $size-text: (
