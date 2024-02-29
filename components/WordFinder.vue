@@ -2,25 +2,27 @@
   <article class="finder">
     <section class="section section__correct">
       <h2 class="header header__correct">Correct Letters</h2>
-      <InputLetter
+      <AppInput
         v-for="(_, index) in correct"
         :key="`correct-${index}`"
+        type="correct"
         v-model:value="correct[index]"
         @keydown="validateLetter($event)"
       />
     </section>
     <section class="section section__valid">
       <h2 class="header header__valid">Valid Letters</h2>
-      <InputLetter
+      <AppInput
         v-for="(_, index) in valid"
         :key="`valid-${index}`"
+        type="valid"
         v-model:value="valid[index]"
         @keydown="validateLetter($event)"
       />
     </section>
     <section class="section section__absent">
       <h2 class="header header__absent">Absent Letters</h2>
-      <InputAbsent v-model:value="absent" @keydown="validateAbsent($event)" />
+      <AppInput type="absent" v-model:value="absent" @keydown="validateAbsent($event)" />
     </section>
     <section class="controls">
       <AppButton colour="brand" @click="handleClick()">Find Matches</AppButton>
