@@ -91,7 +91,6 @@
   }
 }
 .content {
-  display: block;
   position: relative;
   // Generates hover underline
   &::before {
