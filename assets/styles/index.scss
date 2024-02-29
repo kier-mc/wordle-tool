@@ -3,7 +3,6 @@
 @use "./var/size";
 
 @import url("normalize.css");
-@import url("./var/_global.scss");
 
 @mixin lightMode {
   --cl-background: #{colour.base("100")};
