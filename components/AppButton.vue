@@ -32,7 +32,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-color: var(--cl-text);
+    background-color: var(--cl-button-highlight);
     opacity: 0;
     transition: opacity 500ms var(--ef-out-quart);
   }
@@ -52,12 +52,12 @@
     inset: 0;
     margin: calc(var(--sz-border-lg) * -1);
     z-index: -10;
-    background-color: var(--cl-text);
+    background-color: var(--cl-focus-highlight);
     opacity: 0;
     transition: opacity 500ms var(--ef-out-quart);
   }
   &:focus {
-    outline: var(--sz-border-md) solid var(--cl-text);
+    outline: var(--sz-border-md) solid var(--cl-focus-highlight);
     &::after {
       opacity: 1;
     }
