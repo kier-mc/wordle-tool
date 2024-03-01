@@ -1,7 +1,7 @@
 <template>
   <div class="input">
     <label :class="setLabelClass" :for="id">{{ label }}</label>
-    <div class="input__wrapper">
+    <div class="input__wrapper" aria-hidden="true">
       <!-- Correct or valid input -->
       <input
         v-if="type === 'correct' || type === 'valid'"
@@ -78,6 +78,10 @@
     background-color: var(--cl-input-background);
     font-size: var(--sz-text-md);
     color: var(--cl-input-text);
+    transition: outline 500ms var(--ef-out-quart);
+    &:focus {
+      outline: var(--sz-border-md) solid var(--cl-text);
+    }
     &--correct,
     &--valid {
       aspect-ratio: 1 / 1;
