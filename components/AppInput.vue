@@ -1,7 +1,7 @@
 <template>
   <div class="input">
     <label :class="setLabelClass" :for="id">{{ label }}</label>
-    <div class="input__wrapper" aria-hidden="true">
+    <div class="input__wrapper">
       <!-- Correct or valid input -->
       <input
         v-if="type === 'correct' || type === 'valid'"
