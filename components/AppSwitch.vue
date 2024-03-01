@@ -74,7 +74,7 @@
       border-radius: var(--inner-radius);
       margin-block: auto;
       background-color: var(--cl-switch-handle);
-      transition: inset 500ms var(--ef-out-quart);
+      transition: inset 125ms var(--ef-out-cubic);
     }
     // Generates focused border
     &::after {
