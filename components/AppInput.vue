@@ -46,7 +46,6 @@
 .input {
   display: grid;
   grid-auto-rows: auto;
-  max-width: fit-content;
   &:focus-within {
     .input__wrapper::before {
       opacity: 1;
@@ -72,6 +71,8 @@
   }
   &__element {
     all: unset;
+    box-sizing: border-box;
+    width: 100%;
     padding: var(--sz-xs);
     border: var(--sz-border-md) solid var(--cl-input-border);
     background-color: var(--cl-input-background);
@@ -79,11 +80,9 @@
     color: var(--cl-input-text);
     &--correct,
     &--valid {
-      --text-size: var(--sz-text-xl);
-
-      aspect-ratio: 1/1;
-      max-width: var(--text-size);
-      font-size: var(--text-size);
+      aspect-ratio: 1 / 1;
+      height: var(--sz-2xl);
+      font-size: var(--sz-text-xl);
       text-align: center;
       text-transform: uppercase;
     }
