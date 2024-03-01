@@ -68,6 +68,8 @@
   --sz-border-md: #{size.border("md")};
   --sz-border-lg: #{size.border("lg")};
 
+  --cl-button-highlight: #{colour.base("100")};
+
   --cl-button-brand-background: #{colour.brand("600")};
   --cl-button-brand-border: #{colour.brand("400")};
   --cl-button-brand-text: #{colour.base("100")};
