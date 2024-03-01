@@ -1,28 +1,39 @@
 <template>
   <article class="finder">
-    <section class="section section__correct">
-      <h2 class="header header__correct">Correct Letters</h2>
+    <h2>Word Finder</h2>
+    <section class="letters letters--correct" aria-labelledby="header-correct">
+      <h3 class="letters__header letters__header--correct" id="header-correct">Correct Letters</h3>
       <AppInput
         v-for="(_, index) in correct"
         :key="`correct-${index}`"
         type="correct"
+        :id="`input-correct-${index}`"
+        :label="`Correct letter ${+index + 1}`"
         v-model:value="correct[index]"
         @keydown="validateLetter($event)"
       />
     </section>
-    <section class="section section__valid">
-      <h2 class="header header__valid">Valid Letters</h2>
+    <section class="letters letters--valid" aria-labelledby="header-valid">
+      <h3 class="letters__header letters__header--valid" id="header-valid">Valid Letters</h3>
       <AppInput
         v-for="(_, index) in valid"
         :key="`valid-${index}`"
         type="valid"
+        :id="`input-valid-${index}`"
+        :label="`Valid letter ${+index + 1}`"
         v-model:value="valid[index]"
         @keydown="validateLetter($event)"
       />
     </section>
-    <section class="section section__absent">
-      <h2 class="header header__absent">Absent Letters</h2>
-      <AppInput type="absent" v-model:value="absent" @keydown="validateAbsent($event)" />
+    <section class="letters letters--absent" aria-labelledby="header-absent">
+      <h3 class="letters__header letters__header--absent" id="header-absent">Absent Letters</h3>
+      <AppInput
+        type="absent"
+        id="input-absent"
+        label="Absent letters"
+        v-model:value="absent"
+        @keydown="validateAbsent($event)"
+      />
     </section>
     <section class="controls">
       <AppButton colour="brand" @click="handleClick()">Find Matches</AppButton>
@@ -35,32 +46,33 @@
 @use "../assets/styles/var/size";
 .finder {
   display: grid;
-  grid-template-rows: repeat(4, auto);
+  grid-template-rows: repeat(5, auto);
   row-gap: var(--sz-lg);
   margin-inline: auto;
 }
-.section {
+.letters {
   display: grid;
   grid-template-rows: repeat(2, auto);
+  row-gap: var(--sz-xs);
   justify-content: center;
+  &__header {
+    &--correct,
+    &--valid {
+      grid-column: 1 / 6;
+    }
+  }
 }
-.section__correct,
-.section__valid {
+.letters--correct,
+.letters--valid {
   grid-template-columns: repeat(5, auto);
   column-gap: var(--sz-xs);
 }
-.section__absent {
-  grid-template-columns: repeat(1, auto);
+.letters--absent {
+  grid-template-columns: repeat(1, 1fr);
 }
 .controls {
   display: flex;
   justify-content: space-between;
-}
-.header {
-  &__correct,
-  &__valid {
-    grid-column: 1 / 6;
-  }
 }
 </style>
 
