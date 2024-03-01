@@ -23,6 +23,7 @@
   color: var(--cl-button-text);
   // prettier-ignore
   transition:
+    outline 500ms var(--ef-out-quart),
     background-color 500ms var(--ef-out-quart),
     opacity 500ms var(--ef-out-quart),
     color 500ms var(--ef-out-quart);
@@ -56,6 +57,7 @@
     transition: opacity 500ms var(--ef-out-quart);
   }
   &:focus {
+    outline: var(--sz-border-md) solid var(--cl-text);
     &::after {
       opacity: 1;
     }
