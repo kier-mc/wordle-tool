@@ -55,7 +55,7 @@
   }
   &__track {
     --inner-radius: calc(var(--cursor-size) / 2);
-    --outer-radius: calc(var(--inner-radius) + var(--cursor-inset));
+    --outer-radius: var(--cursor-size);
 
     cursor: pointer;
     position: relative;
