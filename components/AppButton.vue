@@ -10,14 +10,15 @@
 
   all: unset;
   cursor: pointer;
+  box-sizing: border-box;
   position: relative;
-  max-width: max-content;
   height: max-content;
   padding-inline: var(--sz-lg);
   padding-block: var(--sz-sm);
   border: var(--border-size) solid var(--cl-button-border);
   background-color: var(--cl-button-background);
   font-weight: 600;
+  text-align: center;
   text-transform: uppercase;
   color: var(--cl-button-text);
   // prettier-ignore
