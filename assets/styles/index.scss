@@ -10,6 +10,8 @@
 
   --cl-text: #{colour.base("900")};
 
+  --cl-focus-highlight: #{colour.base("600")};
+
   --cl-icon: #{colour.base("700")};
   --cl-icon-hover: #{colour.base("900")};
 
@@ -20,6 +22,9 @@
   --cl-button-background: #{colour.base("600")};
   --cl-button-border: #{colour.base("500")};
   --cl-button-text: #{colour.base("100")};
+
+  --cl-switch-background: #{colour.base("500")};
+  --cl-switch-handle: #{colour.base("900")};
 }
 
 @mixin darkMode {
@@ -28,6 +33,8 @@
 
   --cl-text: #{colour.base("100")};
 
+  --cl-focus-highlight: #{colour.base("100")};
+
   --cl-icon: #{colour.base("400")};
 
   --cl-icon-hover: #{colour.base("100")};
@@ -35,6 +42,13 @@
   --cl-input-background: #{colour.base("700")};
   --cl-input-border: #{colour.base("600")};
   --cl-input-text: #{colour.base("200")};
+
+  --cl-button-background: #{colour.base("700")};
+  --cl-button-border: #{colour.base("600")};
+  --cl-button-text: #{colour.base("100")};
+
+  --cl-switch-background: #{colour.base("700")};
+  --cl-switch-handle: #{colour.base("100")};
 }
 
 :root {
@@ -70,10 +84,11 @@
   --cl-button-green-border: #{colour.green("400")};
   --cl-button-green-text: #{colour.base("100")};
 
-  --cl-switch-inactive-background: #{colour.base("700")};
-  --cl-switch-active-background: #{colour.green("600")};
+  --cl-switch-background-active: #{colour.green("600")};
+  --cl-switch-handle-active: #{colour.base("100")};
 
   --ef-out-quart: #{easing.out("quart")};
+  --ef-out-cubic: #{easing.out("cubic")};
 }
 
 :root,
@@ -119,4 +134,5 @@ h6 {
   scroll-behavior: smooth;
   box-sizing: border-box;
   line-height: 1.618;
+  transition: color 350ms var(--ef-out-quart), background-color 350ms var(--ef-out-quart);
 }
