@@ -17,8 +17,8 @@
 <style scoped lang="scss">
 @use "../assets/styles/var/mixin";
 .switch {
-  --track-width: var(--sz-xl);
-  --track-height: calc(var(--track-width) / 2);
+  --track-height: var(--sz-lg);
+  --track-width: calc(var(--track-height) * 2);
   --cursor-inset: calc(var(--track-width) / 12);
   --cursor-size: calc(var(--track-height) - calc(var(--cursor-inset) * 2));
 
