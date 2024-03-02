@@ -1,5 +1,5 @@
 <template>
-  <component class="icon" :is="useIcon" />
+  <component class="icon" :is="useIcon" :title="title" />
 </template>
 
 <style scoped lang="scss">
@@ -29,6 +29,11 @@ const props = defineProps({
    * @defaultvalue 3rem
    */
   size: { type: String as PropType<IconSizes>, default: "3rem" },
+  /**
+   * A title that will be passed to the icon to semantically label it.
+   * @defaultvalue ""
+   */
+  title: { type: String as PropType<string>, default: "" },
 });
 
 const useIcon = defineAsyncComponent<Component>({
