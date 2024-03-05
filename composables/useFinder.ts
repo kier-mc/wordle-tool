@@ -85,7 +85,7 @@ function filterValidWords(permitted: string[], list: MaybeRef<WordData[]>): Word
   });
 }
 /**
- * Tests a {@link IndexedWord} object containing permitted values against a {@link WordData}
+ * Tests an {@link IndexedWord} object containing permitted values against a {@link WordData}
  * array and returns the array of filtered results. Considerate of index positions (indicated
  * by the key of the IndexedWord object) and will only return words where the index position
  * of the matching letter is equal to the key.
