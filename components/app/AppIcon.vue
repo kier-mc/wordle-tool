@@ -37,7 +37,7 @@ const props = defineProps({
 });
 
 const useIcon = defineAsyncComponent<Component>({
-  loader: () => import(`./icons/Icon${Icons[props.icon]}.vue`),
+  loader: () => import(`../icons/Icon${Icons[props.icon]}.vue`),
 });
 
 const setFill = computed((): string => {

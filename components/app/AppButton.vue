@@ -111,7 +111,7 @@
 </style>
 
 <script setup lang="ts">
-import type { ValidColour } from "../types/components.app";
+import type { ValidColour } from "~/types/components.app";
 
 const props = defineProps({
   colour: { type: String as PropType<ValidColour>, default: "base" },
