@@ -3,7 +3,7 @@
     <h2>Word Finder</h2>
     <section class="letters letters--correct" aria-labelledby="header-correct">
       <h3 class="letters__header letters__header--correct" id="header-correct">Correct Letters</h3>
-      <AppInput
+      <FormInput
         v-for="(_, index) in correct"
         :key="`correct-${index}`"
         type="correct"
@@ -15,7 +15,7 @@
     </section>
     <section class="letters letters--valid" aria-labelledby="header-valid">
       <h3 class="letters__header letters__header--valid" id="header-valid">Valid Letters</h3>
-      <AppInput
+      <FormInput
         v-for="(_, index) in valid"
         :key="`valid-${index}`"
         type="valid"
@@ -27,7 +27,7 @@
     </section>
     <section class="letters letters--absent" aria-labelledby="header-absent">
       <h3 class="letters__header letters__header--absent" id="header-absent">Absent Letters</h3>
-      <AppInput
+      <FormInput
         type="absent"
         id="input-absent"
         label="Absent letters"
