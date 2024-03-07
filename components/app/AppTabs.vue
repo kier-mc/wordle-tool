@@ -1,16 +1,16 @@
 <template>
-  <div class="tabs" ref="element">
+  <div class="tabs" ref="element" tabindex="-1">
     <header class="header">
       <button
         v-for="(tab, key) in tabs"
         :key="key"
-        class="header__tab"
+        class="tab"
         :data-tab="key"
         :data-active="state.tab === key"
         type="button"
         @click="handleClick($event)"
       >
-        {{ tab.label }}
+        <span class="tab__label">{{ tab.label }}</span>
       </button>
     </header>
     <div class="content">
@@ -36,37 +36,42 @@
 .header {
   position: relative;
   background-color: var(--cl-tabs-header);
-  &__tab {
-    all: unset;
-    cursor: pointer;
-    box-sizing: border-box;
-    position: relative;
-    padding-inline: var(--sz-lg);
-    padding-block: var(--sz-sm);
-    background-color: var(--cl-tabs-tab-background);
+}
+.tab {
+  all: unset;
+  cursor: pointer;
+  box-sizing: border-box;
+  position: relative;
+  padding-inline: var(--sz-lg);
+  padding-block: var(--sz-sm);
+  background-color: var(--cl-tabs-tab-background);
+  transition-property: background-color, color;
+  transition-timing-function: var(--ef-out-quart);
+  transition-duration: 500ms;
+  &::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: var(--sz-border-lg);
+    background-color: var(--cl-tabs-tab-highlight);
+    opacity: 0;
+    transition: opacity 500ms var(--ef-out-quart);
+  }
+  &[data-active="true"] {
+    background-color: var(--cl-tabs-tab-active-background);
+  }
+  &[data-active="true"]::before {
+    opacity: 1;
+  }
+  &[data-active="true"] &__label {
+    color: var(--cl-tabs-tab-active-text);
+  }
+  &__label {
+    pointer-events: none;
     font-weight: 600;
     text-transform: uppercase;
     color: var(--cl-tabs-tab-text);
-    transition-property: background-color, color;
-    transition-timing-function: var(--ef-out-quart);
-    transition-duration: 500ms;
-    &::before {
-      content: "";
-      position: absolute;
-      inset-inline: 0;
-      bottom: 0;
-      height: var(--sz-border-lg);
-      background-color: var(--cl-tabs-tab-highlight);
-      opacity: 0;
-      transition: opacity 500ms var(--ef-out-quart);
-    }
-    &[data-active="true"] {
-      background-color: var(--cl-tabs-tab-active-background);
-      color: var(--cl-tabs-tab-active-text);
-    }
-    &[data-active="true"]::before {
-      opacity: 1;
-    }
   }
 }
 .content {
