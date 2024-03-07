@@ -10,7 +10,7 @@
         type="button"
         @click="handleClick($event)"
       >
-        <span class="tab__label">{{ tab.label }}</span>
+        <div class="tab__label">{{ tab.label }}</div>
       </button>
     </header>
     <div class="content">
@@ -48,21 +48,32 @@
   transition-property: background-color, color;
   transition-timing-function: var(--ef-out-quart);
   transition-duration: 500ms;
-  &::before {
+  &::before,
+  &::after {
     content: "";
     position: absolute;
-    inset-inline: 0;
-    bottom: 0;
-    height: var(--sz-border-lg);
-    background-color: var(--cl-tabs-tab-highlight);
     opacity: 0;
     transition: opacity 500ms var(--ef-out-quart);
   }
+  // Active tab highlight
+  &::before {
+    inset-inline: 0;
+    bottom: 0;
+    height: var(--sz-border-lg);
+    z-index: 10;
+    background-color: var(--cl-tabs-tab-highlight);
+  }
+  // Hover/focus overlay for active tab
+  &::after {
+    inset: 0;
+    z-index: 5;
+    background-color: var(--cl-tabs-tab-highlight);
+  }
   &[data-active="true"] {
     background-color: var(--cl-tabs-tab-active-background);
-  }
-  &[data-active="true"]::before {
-    opacity: 1;
+    &::before {
+      opacity: 1;
+    }
   }
   &[data-active="true"] &__label {
     color: var(--cl-tabs-tab-active-text);
@@ -72,6 +83,12 @@
     font-weight: 600;
     text-transform: uppercase;
     color: var(--cl-tabs-tab-text);
+  }
+  &:focus,
+  &:hover {
+    &::after {
+      opacity: 0.125;
+    }
   }
 }
 .content {
