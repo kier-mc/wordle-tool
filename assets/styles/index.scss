@@ -27,11 +27,13 @@
   --cl-switch-handle: #{colour.base("700")};
 
   --cl-tabs-background: #{colour.base("200")};
+  --cl-tabs-border: #{colour.base("300")};
   --cl-tabs-header: #{colour.base("400")};
-  --cl-tabs-tab-background: #{colour.base("500")};
-  --cl-tabs-tab-active-background: #{colour.base("600")};
-  --cl-tabs-tab-highlight: #{colour.base("200")};
-  --cl-tabs-tab-active-text: #{colour.base("200")};
+  --cl-tabs-tab-background: #{colour.base("400")};
+  --cl-tabs-tab-active-background: #{colour.base("200")};
+  --cl-tabs-tab-highlight: #{colour.brand("500")};
+  --cl-tabs-tab-text: #{colour.base("700")};
+  --cl-tabs-tab-active-text: #{colour.base("900")};
 }
 
 @mixin darkMode {
@@ -58,11 +60,13 @@
   --cl-switch-handle: #{colour.base("100")};
 
   --cl-tabs-background: #{colour.base("700")};
+  --cl-tabs-border: #{colour.base("800")};
   --cl-tabs-header: #{colour.base("800")};
   --cl-tabs-tab-background: #{colour.base("800")};
-  --cl-tabs-tab-active-background: #{colour.base("500")};
-  --cl-tabs-tab-highlight: #{colour.base("200")};
-  --cl-tabs-tab-active-text: #{colour.base("900")};
+  --cl-tabs-tab-active-background: #{colour.base("700")};
+  --cl-tabs-tab-highlight: #{colour.brand("500")};
+  --cl-tabs-tab-text: #{colour.base("500")};
+  --cl-tabs-tab-active-text: #{colour.base("100")};
 }
 
 :root {
