@@ -30,6 +30,7 @@
 <style scoped lang="scss">
 .tabs {
   overflow-x: hidden;
+  border: var(--sz-border-sm) solid var(--cl-tabs-border);
   background-color: var(--cl-tabs-background);
 }
 .header {
@@ -45,6 +46,7 @@
     background-color: var(--cl-tabs-tab-background);
     font-weight: 600;
     text-transform: uppercase;
+    color: var(--cl-tabs-tab-text);
     transition-property: background-color, color;
     transition-timing-function: var(--ef-out-quart);
     transition-duration: 500ms;
