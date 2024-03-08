@@ -112,15 +112,28 @@ import type { TabData } from "~/types/components.app";
 
 const props = defineProps({
   tabs: { type: Array as PropType<TabData[]>, default: [] },
+  activeTab: { type: String as PropType<string> },
 });
 
-const { tabs } = toRefs(props);
+const { tabs, activeTab } = toRefs(props);
+
+const emits = defineEmits<{
+  (event: "update:active-tab", value: string): void;
+}>();
+
+function emitActiveTab() {
+  const { tab } = state.value;
+  const active = tabs.value[tab].id;
+  emits("update:active-tab", active);
+}
 
 const element = ref<HTMLDivElement | null>(null);
 const state = ref({
   tab: 0,
   width: 0,
 });
+
+watch(state, () => emitActiveTab(), { deep: true });
 
 const elementWidth = computed(() => {
   const { width } = state.value;
