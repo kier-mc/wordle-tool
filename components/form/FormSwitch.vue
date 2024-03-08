@@ -1,5 +1,5 @@
 <template>
-  <div class="switch">
+  <div :class="setRootClass">
     <label class="switch__label" :id="`${id}-label`" :for="id">{{ label }}</label>
     <input
       class="switch__input"
@@ -8,6 +8,8 @@
       :id="id"
       :name="id"
       :aria-labelledby="`${id}-label`"
+      :disabled="disabled"
+      :aria-disabled="disabled"
       @input="handleCheck()"
     />
     <span class="switch__track" @click="handleClick()" aria-hidden="true"></span>
@@ -29,10 +31,22 @@
   column-gap: var(--sz-sm);
   align-items: center;
   padding: var(--sz-xs);
+  transition: opacity 350ms var(--ef-out-quart);
   &:focus-within,
   &:active {
     .switch__track::after {
       opacity: 1;
+    }
+  }
+  &--disabled {
+    opacity: 0.375;
+    &:active {
+      .switch__track::after {
+        opacity: 0;
+      }
+    }
+    .switch__track {
+      cursor: not-allowed;
     }
   }
   &__input {
@@ -97,15 +111,21 @@ const props = defineProps({
   id: { type: String as PropType<string> },
   label: { type: String as PropType<string> },
   value: { type: Boolean as PropType<boolean>, default: false },
+  disabled: { type: Boolean as PropType<boolean>, default: false },
 });
 
 const emits = defineEmits<{
   (event: "update:value", value: boolean): void;
 }>();
 
-const { id, label, value } = toRefs(props);
+const { id, label, value, disabled } = toRefs(props);
 
 const input = ref<HTMLInputElement | null>(null);
+
+const setRootClass = computed(() => {
+  const { value } = disabled;
+  return value ? "switch switch--disabled" : "switch";
+});
 
 function emitValue(value: boolean) {
   if (!input.value) return;
@@ -114,13 +134,13 @@ function emitValue(value: boolean) {
 }
 
 function handleCheck() {
-  if (!input.value) return;
+  if (!input.value || disabled.value) return;
   const { checked } = input.value;
   emitValue(checked);
 }
 
 function handleClick() {
-  if (!input.value) return;
+  if (!input.value || disabled.value) return;
   const { checked } = input.value;
   input.value.focus();
   emitValue(!checked);
