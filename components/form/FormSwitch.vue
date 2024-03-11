@@ -31,7 +31,7 @@
   column-gap: var(--sz-sm);
   align-items: center;
   padding: var(--sz-xs);
-  transition: opacity 350ms var(--ef-out-quart);
+  transition: opacity 125ms var(--ef-out-quart);
   &:focus-within,
   &:active {
     .switch__track::after {
