@@ -4,10 +4,13 @@
 
 <style scoped lang="scss">
 .icon {
+  --size: v-bind(setSize);
+  --fill: v-bind(setFill);
+
   aspect-ratio: 1/1;
   width: 100%;
-  max-width: v-bind(setSize);
-  fill: v-bind(setFill);
+  max-width: var(--size, 3rem);
+  fill: var(--fill, currentColor);
 }
 </style>
 
