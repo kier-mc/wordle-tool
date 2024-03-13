@@ -7,13 +7,13 @@
           id="switch-potential-solutions"
           label="Accepted Solutions Only"
           :disabled="disable.isPotentialSolution.value"
-          v-model:value="filters.flags.isPotentialSolution"
+          v-model:value="flags.isPotentialSolution"
         />
         <FormSwitch
           id="switch-potential-solutions"
           label="Valid Input Only"
           :disabled="disable.isNotPotentialSolution.value"
-          v-model:value="filters.flags.isNotPotentialSolution"
+          v-model:value="flags.isNotPotentialSolution"
         />
       </template>
       <template v-slot:composition>
@@ -48,11 +48,8 @@
 </style>
 
 <script setup lang="ts">
-import type { WordData } from "~/types/api.dataset";
-import type { Filters, FilterConditions, FilterPredicate } from "~/types/components.word";
-
-const matches = useState<WordData[]>("matches");
-const localMatches = useState<WordData[]>("local-matches");
+const filters = useFilter().filters;
+const { flags } = toRefs(filters.value);
 
 const tabs = [
   { id: "flags", label: "Solution" },
@@ -83,53 +80,4 @@ const disable = (function () {
     hasUniqueLetters,
   };
 })();
-
-const filters = ref<Filters>({
-  flags: {
-    isPotentialSolution: false,
-    isNotPotentialSolution: false,
-    hasDuplicateLetters: false,
-    hasUniqueLetters: false,
-  },
-  composition: {
-    consonants: 0,
-    vowels: 0,
-  },
-});
-const { flags } = toRefs(filters.value);
-
-const conditions: FilterConditions = {
-  isPotentialSolution: (word) => word.metrics.is_potential_solution,
-  isNotPotentialSolution: (word) => !word.metrics.is_potential_solution,
-  hasDuplicateLetters: (word) => word.metrics.has_duplicate_letters,
-  hasUniqueLetters: (word) => !word.metrics.has_duplicate_letters,
-};
-
-function filterFlags(): FilterPredicate[] {
-  const predicates: ((word: WordData) => boolean)[] = [];
-
-  Object.entries(filters.value.flags).forEach(([filter, bool]) => {
-    if (bool) predicates.push(conditions[filter as keyof Filters["flags"]]);
-  });
-
-  return predicates;
-}
-
-function filterMatches(): WordData[] {
-  const payload = ref<WordData[]>(matches.value);
-  const predicates = ref<((word: WordData) => boolean)[]>([]);
-
-  predicates.value = [...filterFlags()];
-  const condition = (word: WordData) => predicates.value.every((predicate) => predicate(word));
-
-  if (!predicates.value.length) return matches.value;
-  return payload.value.filter(condition);
-}
-
-function syncLocalMatches(): void {
-  localMatches.value = filterMatches();
-}
-
-watch(filters, () => syncLocalMatches(), { deep: true });
-watch(matches, () => syncLocalMatches());
 </script>
