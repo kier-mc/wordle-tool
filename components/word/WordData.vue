@@ -1,6 +1,6 @@
 <template>
   <li class="word">
-    <AppButton class="result" colour="brand" @click="handleClick()">{{ word }}</AppButton>
+    <AppButton class="result" colour="brand">{{ word.term }}</AppButton>
   </li>
 </template>
 
@@ -15,18 +15,11 @@
 </style>
 
 <script setup lang="ts">
-import type { ValidWord } from "~/types/unions/api.dataset";
+import type { WordData } from "~/types/api.dataset";
 
 const props = defineProps({
-  word: { type: String as PropType<ValidWord>, required: true },
+  word: { type: Object as PropType<WordData>, required: true },
 });
 
 const { word } = toRefs(props);
-
-const { getWordMetrics } = useDataset();
-
-function handleClick() {
-  const { term, metrics } = getWordMetrics(word)[0];
-  console.log(metrics);
-}
 </script>
