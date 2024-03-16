@@ -107,17 +107,31 @@ function filterCorrectWords(permitted: IndexedWord<string>, list: MaybeRef<WordD
  * A composable that provides functions and other properties related to the word finding
  * capability of the app.
  */
-export const useFinder = function (state: MaybeRef<FinderState>) {
+export const useFinder = function () {
   const { getRawData } = useDataset();
-  const matches = shallowRef<WordData[]>([]);
+  const matches = useState<WordData[]>("matches", () => shallowRef([]));
+  const state = useState<FinderState>("finder-state", () => ({
+    correct: {
+      0: null,
+      1: null,
+      2: null,
+      3: null,
+      4: null,
+    },
+    valid: {
+      0: null,
+      1: null,
+      2: null,
+      3: null,
+      4: null,
+    },
+    absent: null,
+  }));
   /**
-   * Takes in a {@link FinderState} object/ref and returns a list of words that match the
-   * rules defined by the state.
-   * @param state {MaybeRef<FinderState>}
-   * An object to be utilised as a ruleset for filtering. Can be static or reactive.
+   * Filters the complete dataset against data entered into the composable state.
    */
   function findMatches() {
-    const { correct, valid, absent } = unref(state);
+    const { correct, valid, absent } = state.value;
     matches.value = getRawData();
     if (absent) {
       const prohibited = [...absent];
@@ -131,10 +145,19 @@ export const useFinder = function (state: MaybeRef<FinderState>) {
       const permitted = filterPermittedValues(correct);
       matches.value = filterCorrectWords(permitted, matches);
     }
-    return matches;
+  }
+  /**
+   * Resets the current state back to the initial (default).
+   */
+  function resetState() {
+    const { value: currentState } = state;
+    Object.assign(currentState, initialFinderState());
+    matches.value = [];
   }
 
   return {
+    state,
     findMatches,
+    resetState,
   };
 };
