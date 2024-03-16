@@ -36,7 +36,7 @@
       />
     </section>
     <section class="controls">
-      <AppButton colour="brand" @click="handleClick()">Find Matches</AppButton>
+      <AppButton colour="brand" @click="findMatches()">Find Matches</AppButton>
       <AppButton colour="red" @click="resetState()">Clear All</AppButton>
     </section>
   </article>
@@ -77,30 +77,8 @@
 </style>
 
 <script setup lang="ts">
-import type { WordData } from "~/types/api.dataset";
-import type { FinderState } from "~/types/components.word";
-
-const data = ref<FinderState>({
-  correct: {
-    0: null,
-    1: null,
-    2: null,
-    3: null,
-    4: null,
-  },
-  valid: {
-    0: null,
-    1: null,
-    2: null,
-    3: null,
-    4: null,
-  },
-  absent: null,
-});
-const { correct, valid, absent } = toRefs(data.value);
-
-const { findMatches } = useFinder(data);
-const matches = useState<WordData[]>("matches");
+const { state, findMatches, resetState } = useFinder();
+const { correct, valid, absent } = toRefs(state.value);
 
 function validateLetter(event: KeyboardEvent) {
   const { key } = event;
@@ -116,16 +94,5 @@ function validateAbsent(event: KeyboardEvent) {
   const prohibited = [...setA, ...setB].filter(Boolean);
   if (!prohibited.includes(key)) return;
   event.preventDefault();
-}
-
-function handleClick() {
-  matches.value = findMatches().value;
-}
-
-function resetState() {
-  correct.value = Object.values(correct.value).map((value) => (value = null));
-  valid.value = Object.values(valid.value).map((value) => (value = null));
-  absent.value = null;
-  matches.value = [];
 }
 </script>
