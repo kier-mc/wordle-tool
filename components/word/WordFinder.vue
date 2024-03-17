@@ -79,14 +79,24 @@
 <script setup lang="ts">
 const { state, findMatches, resetState } = useFinder();
 const { correct, valid, absent } = toRefs(state.value);
-
+/**
+ * Validation function for correct/valid letter inputs. Prevents entry of any letter that is already
+ * present in the "absent" field.
+ * @param event
+ * A keyboard event fired by the event listener. Passed in the template.
+ */
 function validateLetter(event: KeyboardEvent) {
   const { key } = event;
   const prohibited = absent.value;
   if (!prohibited || !prohibited.includes(key)) return;
   event.preventDefault();
 }
-
+/**
+ * Validation function for absent letter input. Prevents entry of any lettter that is already present
+ * in either the correct or valid letter inputs.
+ * @param event
+ * A keyboard event fired by the event listener. Passed in the template.
+ */
 function validateAbsent(event: KeyboardEvent) {
   const { key } = event;
   const setA = Object.values(correct.value);
