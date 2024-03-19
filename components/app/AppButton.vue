@@ -117,7 +117,6 @@ const props = defineProps({
   colour: { type: String as PropType<ValidColour>, default: "base" },
   disabled: { type: Boolean as PropType<boolean>, default: false },
 });
-
 const { colour, disabled } = toRefs(props);
 
 const setClass = computed(() => {

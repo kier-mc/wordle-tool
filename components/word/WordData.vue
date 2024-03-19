@@ -20,6 +20,5 @@ import type { WordData } from "~/types/api.dataset";
 const props = defineProps({
   word: { type: Object as PropType<WordData>, required: true },
 });
-
 const { word } = toRefs(props);
 </script>
