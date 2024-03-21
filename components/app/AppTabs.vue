@@ -29,6 +29,7 @@
 
 <style scoped lang="scss">
 .tabs {
+  isolation: isolate;
   overflow-x: hidden;
   border: var(--sz-border-sm) solid var(--cl-tabs-border);
   background-color: var(--cl-tabs-background);
@@ -114,7 +115,6 @@ const props = defineProps({
   tabs: { type: Array as PropType<TabData[]>, default: [] },
   activeTab: { type: String as PropType<string> },
 });
-
 const { tabs, activeTab } = toRefs(props);
 
 const emits = defineEmits<{
