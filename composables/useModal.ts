@@ -1,12 +1,14 @@
 export const useModal = function () {
-  const isVisible = useState<boolean>("modal-visible", () => false);
+  const state = useState<boolean>("modal-visible", () => false);
 
-  function show() {
-    isVisible.value = true;
+  const isVisible = computed(() => state.value);
+
+  function show(): void {
+    state.value = true;
   }
 
-  function hide() {
-    isVisible.value = false;
+  function hide(): void {
+    state.value = false;
   }
 
   return { isVisible, show, hide };
