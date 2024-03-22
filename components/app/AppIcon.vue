@@ -1,5 +1,7 @@
 <template>
-  <component class="icon" :is="useIcon" :title="title" />
+  <ClientOnly>
+    <component class="icon" :is="useIcon" :title="title" />
+  </ClientOnly>
 </template>
 
 <style scoped lang="scss">
