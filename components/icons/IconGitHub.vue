@@ -11,6 +11,5 @@
 const props = defineProps({
   title: { type: String as PropType<string>, default: "" },
 });
-
 const { title } = toRefs(props);
 </script>
