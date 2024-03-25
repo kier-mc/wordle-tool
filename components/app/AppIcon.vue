@@ -1,7 +1,5 @@
 <template>
-  <ClientOnly>
-    <component class="icon" :is="useIcon" :title="title" />
-  </ClientOnly>
+  <component v-if="suspenseResolved" class="icon" :is="useIcon" :title="title" />
 </template>
 
 <style scoped lang="scss">
@@ -39,6 +37,12 @@ const props = defineProps({
    * @defaultvalue ""
    */
   title: { type: String as PropType<string>, default: "" },
+});
+
+const nuxtApp = useNuxtApp();
+const suspenseResolved = ref<boolean>(false);
+nuxtApp.hook("page:finish", () => {
+  suspenseResolved.value = true;
 });
 
 const useIcon = defineAsyncComponent<Component>({
