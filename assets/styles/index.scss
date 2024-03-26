@@ -2,6 +2,8 @@
 @use "./var/easing";
 @use "./var/size";
 
+@use "sass:color";
+
 @import url("normalize.css");
 
 @mixin lightMode {
@@ -34,6 +36,10 @@
   --cl-tabs-tab-highlight: #{colour.brand("500")};
   --cl-tabs-tab-text: #{colour.base("700")};
   --cl-tabs-tab-active-text: #{colour.base("900")};
+
+  --cl-modal-background: #{colour.base("200")};
+  --cl-modal-header: #{colour.base("400")};
+  --cl-modal-border: #{colour.base("300")};
 }
 
 @mixin darkMode {
@@ -67,6 +73,10 @@
   --cl-tabs-tab-highlight: #{colour.brand("500")};
   --cl-tabs-tab-text: #{colour.base("500")};
   --cl-tabs-tab-active-text: #{colour.base("100")};
+
+  --cl-modal-background: #{colour.base("700")};
+  --cl-modal-header: #{colour.base("800")};
+  --cl-modal-border: #{colour.base("700")};
 }
 
 :root {
@@ -107,6 +117,8 @@
   --cl-switch-background-active: #{colour.green("600")};
   --cl-switch-handle-active: #{colour.base("100")};
 
+  --cl-modal-backdrop: #{color.adjust(colour.base("900"), $alpha: -0.15)};
+
   --ef-out-quart: #{easing.out("quart")};
   --ef-out-cubic: #{easing.out("cubic")};
 }
@@ -120,11 +132,11 @@
   @include darkMode();
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    @include darkMode();
-  }
-}
+// @media (prefers-color-scheme: dark) {
+//   :root {
+//     @include darkMode();
+//   }
+// }
 
 body {
   min-height: 100svh;
@@ -154,5 +166,7 @@ h6 {
   scroll-behavior: smooth;
   box-sizing: border-box;
   line-height: 1.618;
-  transition: color 350ms var(--ef-out-quart), background-color 350ms var(--ef-out-quart);
+  transition:
+    color 350ms var(--ef-out-quart),
+    background-color 350ms var(--ef-out-quart);
 }
