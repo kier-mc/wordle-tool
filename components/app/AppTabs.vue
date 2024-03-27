@@ -31,7 +31,7 @@
 .tabs {
   isolation: isolate;
   overflow-x: hidden;
-  border: var(--sz-border-sm) solid var(--cl-tabs-border);
+  border: var(--sz-border-md) solid var(--cl-tabs-border);
   background-color: var(--cl-tabs-background);
 }
 .header {
