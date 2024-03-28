@@ -6,6 +6,11 @@
 
 @import url("normalize.css");
 
+$bp-sm: #{size.breakpoint("sm")};
+$bp-md: #{size.breakpoint("md")};
+$bp-lg: #{size.breakpoint("lg")};
+$bp-xl: #{size.breakpoint("xl")};
+
 @mixin lightMode {
   --cl-background: #{colour.base("100")};
   --cl-footer: #{colour.base("300")};
