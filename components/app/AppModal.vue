@@ -57,7 +57,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--sz-xs);
+    padding: var(--sz-sm);
     background-color: var(--cl-modal-header);
   }
   &__title {
@@ -108,7 +108,7 @@
     transition: fill 500ms var(--ef-out-quart);
   }
   &__content {
-    padding: var(--sz-xs);
+    padding: var(--sz-md);
   }
 }
 </style>
