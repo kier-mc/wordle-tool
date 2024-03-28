@@ -15,6 +15,7 @@
 </template>
 
 <style scoped lang="scss">
+@use "../assets/styles/var/size";
 .backdrop {
   @at-root ::backdrop {
     opacity: 0;
@@ -33,18 +34,22 @@
   }
 }
 .modal {
+  --margin: var(--sz-xl);
+
   position: fixed;
   inset: 0;
   opacity: 0;
   width: 100%;
   max-width: 60ch;
   padding: 0;
-  margin-inline: auto;
-  margin-top: var(--sz-xl);
+  margin-block: var(--sz-xl);
   border: var(--sz-border-sm) solid var(--cl-modal-border);
   color: var(--cl-text);
   background-color: var(--cl-modal-background);
   transition: opacity 500ms var(--ef-out-quart);
+  @media (max-width: size.breakpoint("md")) {
+    max-width: calc(100% - var(--margin) * 2);
+  }
   &[open] {
     opacity: 1;
   }
