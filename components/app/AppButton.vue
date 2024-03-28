@@ -115,7 +115,7 @@
 import type { ValidColour } from "~/types/components.app";
 
 const props = defineProps({
-  colour: { type: String as PropType<ValidColour>, default: "base" },
+  colour: { type: String as PropType<ValidColour>, default: <ValidColour>"base" },
   disabled: { type: Boolean as PropType<boolean>, default: false },
 });
 const { colour, disabled } = toRefs(props);
