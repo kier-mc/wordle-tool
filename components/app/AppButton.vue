@@ -21,7 +21,6 @@
   text-align: center;
   text-transform: uppercase;
   color: var(--cl-button-text);
-  // prettier-ignore
   transition:
     outline 500ms var(--ef-out-quart),
     background-color 500ms var(--ef-out-quart),
@@ -105,7 +104,9 @@
     transform-origin: center;
     background-color: v-bind(setUnderlineColour);
     opacity: 0;
-    transition: transform 250ms var(--ef-out-quart), opacity 300ms var(--ef-out-quart);
+    transition:
+      transform 250ms var(--ef-out-quart),
+      opacity 300ms var(--ef-out-quart);
   }
 }
 </style>
