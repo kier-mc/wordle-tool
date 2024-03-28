@@ -10,7 +10,7 @@
           v-model:value="flags.isPotentialSolution"
         />
         <FormSwitch
-          id="switch-potential-solutions"
+          id="switch-not-potential-solutions"
           label="Valid Input Only"
           :disabled="isDisabled.isNotPotentialSolution.value"
           v-model:value="flags.isNotPotentialSolution"
