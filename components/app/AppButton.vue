@@ -12,7 +12,6 @@
   cursor: pointer;
   box-sizing: border-box;
   position: relative;
-  height: max-content;
   padding-inline: var(--sz-lg);
   padding-block: var(--sz-sm);
   border: var(--border-size) solid var(--cl-button-border);
