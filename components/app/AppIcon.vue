@@ -38,6 +38,7 @@ const props = defineProps({
    */
   title: { type: String as PropType<string>, default: "" },
 });
+const { icon, fill, size, title } = toRefs(props);
 
 const nuxtApp = useNuxtApp();
 const suspenseResolved = ref<boolean>(false);
@@ -46,16 +47,9 @@ nuxtApp.hook("page:finish", () => {
 });
 
 const useIcon = defineAsyncComponent<Component>({
-  loader: () => import(`../icons/Icon${Icons[props.icon]}.vue`),
+  loader: () => import(`../icons/Icon${Icons[icon.value]}.vue`),
 });
 
-const setFill = computed((): string => {
-  const fill = props.fill;
-  return fill;
-});
-
-const setSize = computed((): string => {
-  const size = props.size;
-  return size;
-});
+const setFill = computed((): string => fill.value);
+const setSize = computed((): string => size.value);
 </script>
