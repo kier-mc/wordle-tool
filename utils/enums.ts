@@ -1,6 +1,7 @@
 export enum Icons {
   "github" = "GitHub",
   "xmark" = "XMark",
+  "arrow" = "Arrow",
 }
 
 export enum IconSizes {
