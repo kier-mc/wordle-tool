@@ -119,7 +119,7 @@
     }
     &::before {
       z-index: -5;
-      background-color: var(--cl-tabs-tab-background);
+      background-color: var(--cl-tabs-tab-active-background);
       opacity: 1;
     }
     &::after {
