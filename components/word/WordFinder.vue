@@ -73,6 +73,10 @@
 .controls {
   display: flex;
   justify-content: space-between;
+  @media (max-width: 600px) {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+  }
 }
 </style>
 
