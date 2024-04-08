@@ -61,14 +61,14 @@
       grid-column: 1 / 6;
     }
   }
-}
-.letters--correct,
-.letters--valid {
-  grid-template-columns: repeat(5, auto);
-  column-gap: var(--sz-xs);
-}
-.letters--absent {
-  grid-template-columns: repeat(1, 1fr);
+  &--correct,
+  &--valid {
+    grid-template-columns: repeat(5, auto);
+    column-gap: var(--sz-xs);
+  }
+  &--absent {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 .controls {
   display: flex;
