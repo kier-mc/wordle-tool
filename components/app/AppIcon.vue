@@ -42,9 +42,10 @@ const { icon, fill, size, title } = toRefs(props);
 
 const nuxtApp = useNuxtApp();
 const suspenseResolved = ref<boolean>(false);
-nuxtApp.hook("page:finish", () => {
+nuxtApp.hook("page:loading:end", () => {
   suspenseResolved.value = true;
 });
+onMounted(() => (suspenseResolved.value = true));
 
 const useIcon = defineAsyncComponent<Component>({
   loader: () => import(`../icons/Icon${Icons[icon.value]}.vue`),
