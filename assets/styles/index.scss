@@ -96,6 +96,12 @@ $bp-xl: #{size.breakpoint("xl")};
   --sz-text-lg: #{size.text("lg")};
   --sz-text-xl: #{size.text("xl")};
 
+  --sz-icon-xs: #{size.icon("xs")};
+  --sz-icon-sm: #{size.icon("sm")};
+  --sz-icon-md: #{size.icon("md")};
+  --sz-icon-lg: #{size.icon("lg")};
+  --sz-icon-xl: #{size.icon("xl")};
+
   --sz-border-sm: #{size.border("sm")};
   --sz-border-md: #{size.border("md")};
   --sz-border-lg: #{size.border("lg")};
