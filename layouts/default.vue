@@ -14,7 +14,13 @@
   min-height: 100svh;
 }
 .main {
-  margin-top: var(--sz-xl);
+  display: grid;
+  row-gap: var(--sz-xl);
+  width: 100%;
+  max-width: 80ch;
+  height: max-content;
+  margin-inline: auto;
+  padding: var(--sz-xl);
 }
 </style>
 
