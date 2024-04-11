@@ -53,7 +53,7 @@ const { flags } = toRefs(filters.value);
 
 const tabs = [
   { id: "solution", label: "Solution" },
-  { id: "composition", label: "Word Composition" },
+  { id: "composition", label: "Composition" },
 ];
 const activeTab = ref<string>(tabs[0].id);
 
