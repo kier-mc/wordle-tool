@@ -142,11 +142,11 @@ $bp-xl: #{size.breakpoint("xl")};
   @include darkMode();
 }
 
-// @media (prefers-color-scheme: dark) {
-//   :root {
-//     @include darkMode();
-//   }
-// }
+@media (prefers-color-scheme: dark) {
+  :root {
+    @include darkMode();
+  }
+}
 
 body {
   min-height: 100svh;
