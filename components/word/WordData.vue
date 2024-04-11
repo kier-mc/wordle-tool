@@ -1,16 +1,13 @@
 <template>
-  <li class="word">
-    <AppButton class="word__button" colour="brand">{{ word.term }}</AppButton>
-  </li>
+  <AppButton class="word" colour="brand">
+    {{ word.term }}
+  </AppButton>
 </template>
 
 <style scoped lang="scss">
 .word {
-  all: unset;
-  &__button {
-    font-weight: 400;
-    width: 100%;
-  }
+  font-weight: 400;
+  width: 100%;
 }
 </style>
 
