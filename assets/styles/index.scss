@@ -184,6 +184,19 @@ h5,
 h6 {
   all: unset;
   display: block;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-family: "Fjalla One", sans-serif;
+  font-size: var(--sz-text-lg);
+  letter-spacing: 0.0625rem;
+}
+
+h3 {
+  font-size: var(--sz-text-md);
+  font-weight: 600;
+  letter-spacing: 0.0625rem;
 }
 
 *,
