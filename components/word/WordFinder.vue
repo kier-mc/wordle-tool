@@ -73,7 +73,7 @@
 .controls {
   display: flex;
   justify-content: space-between;
-  @media (max-width: 600px) {
+  @media (max-width: size.breakpoint("md")) {
     display: grid;
     grid-template-columns: repeat(2, 50%);
   }
