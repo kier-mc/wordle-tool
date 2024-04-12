@@ -8,7 +8,6 @@ export default defineNuxtConfig({
           href: "https://fonts.googleapis.com/css?family=Fjalla+One&display=swap",
         },
       ],
-      title: "Wordle Assistant",
     },
   },
   components: ["~/components", "~/components/icons"],
