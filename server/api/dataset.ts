@@ -9,6 +9,7 @@ function getDatasetPath() {
 
 export default defineEventHandler(async (event) => {
   const dataset = getDatasetPath();
+  console.log(`Using path: ${dataset}`);
   try {
     const data = fs.readFileSync(dataset, "utf-8");
     return JSON.parse(data) as WordData[];
