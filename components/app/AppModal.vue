@@ -2,7 +2,7 @@
   <div :class="setBackdropVisibility">
     <dialog ref="modalElement" class="modal" :aria-hidden="!isVisible" tabindex="-1">
       <header class="modal__header">
-        <h2 class="modal__title">{{ title }}</h2>
+        <h3 class="modal__title">{{ title }}</h3>
         <button class="modal__button" type="button" @click="hide()" autofocus>
           <AppIcon class="modal__icon" icon="xmark" :size="iconSize" title="Close modal" />
         </button>
