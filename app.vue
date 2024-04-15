@@ -11,6 +11,8 @@ import type { AsyncDataRequestStatus } from "~/node_modules/nuxt/dist/app/compos
 
 const options: UseFetchOptions<StatefulWordData> = { deep: false };
 
+useSeoMeta(seoMetadata);
+
 onBeforeMount(async () => {
   const { data, status } = await useFetch("/api/dataset", options);
   useState<StatefulWordData>("dataset", () => shallowRef(data));
