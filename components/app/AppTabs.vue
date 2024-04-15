@@ -83,7 +83,9 @@
     display: flex;
     @media (max-width: size.breakpoint("md")) {
       --distance: v-bind(translationDistance);
+      --height: calc(v-bind(iconSize) + var(--sz-md));
 
+      height: var(--height, auto);
       transform: var(--distance, 0px);
       transition: transform 250ms var(--ef-out-quart);
     }
@@ -255,7 +257,7 @@ function emitActiveTab(): void {
   emits("update:active-tab", active);
 }
 
-const iconSize = IconSizes["sm"];
+const iconSize = IconSizes["md"];
 
 const nuxtApp = useNuxtApp();
 const suspenseResolved = ref<boolean>(false);
