@@ -8,6 +8,7 @@
 </template>
 
 <style scoped lang="scss">
+@use "../assets/styles/var/size";
 .grid {
   display: grid;
   grid-template-rows: 1fr auto;
@@ -21,6 +22,9 @@
   height: max-content;
   margin-inline: auto;
   padding: var(--sz-xl);
+  @media (max-width: size.breakpoint("md")) {
+    padding: var(--sz-md);
+  }
 }
 </style>
 
