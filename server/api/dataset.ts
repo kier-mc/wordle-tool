@@ -4,7 +4,7 @@ import path from "path";
 
 function getDatasetPath() {
   if (process.dev) return path.resolve("./public/assets/data", "dataset.json");
-  return new URL("../assets/data/dataset.json", import.meta.url);
+  return new URL("./assets/data/dataset.json", import.meta.url);
 }
 
 export default defineEventHandler(async (event) => {
