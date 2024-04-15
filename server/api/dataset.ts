@@ -4,11 +4,12 @@ import path from "path";
 
 function getDatasetPath() {
   if (process.dev) return path.resolve("./public/assets/data", "dataset.json");
-  return path.join("/assets/data/", "dataset.json");
+  return new URL("assets/data/dataset.json", import.meta.url);
 }
 
 export default defineEventHandler(async (event) => {
   const dataset = getDatasetPath();
+  console.log(import.meta.url);
   console.log(`Using path: ${dataset}`);
   try {
     const data = fs.readFileSync(dataset, "utf-8");
