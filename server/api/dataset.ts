@@ -4,7 +4,7 @@ import path from "path";
 
 function getDatasetPath() {
   if (process.dev) return path.resolve("./public/assets/data", "dataset.json");
-  return path.resolve("./assets/data", "dataset.json");
+  return path.join("/assets/data/", "dataset.json");
 }
 
 export default defineEventHandler(async (event) => {
