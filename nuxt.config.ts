@@ -7,6 +7,16 @@ export default defineNuxtConfig({
       },
       link: [
         {
+          rel: "icon",
+          type: "image/svg+xml",
+          href: "./assets/meta/favicon.svg",
+        },
+        {
+          rel: "icon",
+          type: "image/png",
+          href: "./assets/meta/favicon.png",
+        },
+        {
           rel: "stylesheet",
           href: "https://fonts.googleapis.com/css?family=Fjalla+One&display=swap",
         },
