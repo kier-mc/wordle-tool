@@ -29,7 +29,7 @@ export default defineNuxtConfig({
   modules: ["@vueuse/nuxt"],
   nitro: {
     compressPublicAssets: true,
-    preset: "bun",
+    preset: "vercel",
     serverAssets: [
       {
         baseName: "data",
