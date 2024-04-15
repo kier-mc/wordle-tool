@@ -11,8 +11,8 @@ export default defineEventHandler(async (event) => {
   const dataset = getDatasetPath();
   console.log(`Using path: ${dataset}`);
   try {
-    const data = fs.readFileSync(dataset, "utf-8");
-    return JSON.parse(dataset) as WordData[];
+    const response = await $fetch(dataset);
+    return response as WordData[];
   } catch (error) {
     console.error("Error fetching JSON file");
     return {
