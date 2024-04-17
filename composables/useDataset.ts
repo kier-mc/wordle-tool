@@ -9,7 +9,6 @@ import type { ValidWord } from "~/types/unions/api.dataset";
  */
 export const useDataset = function () {
   const dataset = useState<StatefulWordData>("dataset");
-
   /**
    * Computed property that returns the status of the dataset fetch request.
    * This call is made in app.vue when the application is first launched.
@@ -17,6 +16,13 @@ export const useDataset = function () {
   const status = computed(() => {
     const status = useState<AsyncDataRequestStatus>("dataset-status");
     return status.value;
+  });
+  /**
+   * Computed property that returns a boolean based on whether or not the dataset fetch
+   * request is complete. Acts as a convenience wrapper for the "status" computed property.
+   */
+  const isLoading = computed(() => {
+    return status.value !== "success";
   });
   /**
    * Attempts to return the complete payload of the dataset with no further
@@ -74,6 +80,7 @@ export const useDataset = function () {
 
   return {
     status,
+    isLoading,
     getRawData,
     getAllWords,
     getPotentialSolutions,
